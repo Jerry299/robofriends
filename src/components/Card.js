@@ -26,12 +26,6 @@ const Card = props => {
           Population :{" "}
           <span style={{ color: "tomato" }}>{props.population} (Est.)</span>
         </h3>
-        <h3>
-          Covid-19 Cases :{" "}
-          <span>
-            <em style={{ color: "gray" }}> Data Coming Soon</em>
-          </span>
-        </h3>
       </div>
     </div>
   );
