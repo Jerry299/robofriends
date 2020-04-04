@@ -1,4 +1,4 @@
-export const CHANGE_SEARCH_FIELD = "CHANGE_SEARCH_FIELD";
+export const CHANGE_SEARCH_FIELD = "CHANGE_SEARCHFIELD";
 
 /* const fetchItems = url => {
   return fetch(url)
