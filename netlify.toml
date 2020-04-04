@@ -1,0 +1,4 @@
+[build]
+base = "robofriends/"
+publish = "robofriends/build/"
+command = "npm run build"
