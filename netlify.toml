@@ -1,4 +1,4 @@
 [build]
-base = "robofriends/"
-publish = "robofriends/build/"
+base = "wecountries/"
+publish = "wecountries/build/"
 command = "npm run build"
