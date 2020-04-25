@@ -7,18 +7,22 @@ import Scroll from "../components/Scroll.js";
 import ErrorBoundary from "../components/ErrorBoundary";
 import "./App.css";
 import { API_URL } from "../config";
-import { setSearchField } from "../actions";
+import { setSearchField, requestCountries } from "../actions";
+import Spinner from "./Spinner";
 
 //define connect parameters
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    searchField: state.searchField
+    searchField: state.searchRobots.searchField,
+    countries: state.requestCountries.countries,
+    isPending: state.requestCountries.isPending,
+    err: state.requestCountries.err,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    onSearchChange: event => dispatch(setSearchField(event.target.value))
+    onSearchChange: (event) => dispatch(setSearchField(event.target.value)),
   };
 };
 
@@ -26,7 +30,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      countries: []
+      countries: [],
     };
   }
 
@@ -40,13 +44,13 @@ class App extends Component {
 
   componentDidMount() {
     fetch(`${API_URL}`)
-      .then(res => res.json())
-      .then(data =>
+      .then((res) => res.json())
+      .then((data) =>
         this.setState({
-          countries: data
+          countries: data,
         })
       )
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   }
 
   render() {
@@ -54,11 +58,11 @@ class App extends Component {
     //so robots in the props is equal to countries
     const { countries } = this.state;
     const { searchField, onSearchChange } = this.props;
-    const filteredRobots = this.state.countries.filter(country => {
+    const filteredRobots = this.state.countries.filter((country) => {
       return country.name.toLowerCase().includes(searchField.toLowerCase());
     });
     return !countries.length ? (
-      <h1>Loading.........</h1>
+      <Spinner />
     ) : (
       <div className="tc scroll-type">
         <h1 className="f1">We Countries</h1>
@@ -72,7 +76,4 @@ class App extends Component {
     );
   }
 }
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -1,10 +1,10 @@
 import React from "react";
 
-const Card = props => {
+const Card = (props) => {
   return (
     <div
-      className=" tc bg-light-green pa3 dib br3 ma3 grow bw2 shadow-5 "
-      style={{ width: "19rem", height: "22rem" }}
+      className=" tc bg-light-green pa3 dib br3 ma3 grow bw2 shadow-5 pv4"
+      style={{}}
     >
       <img
         src={`${props.flag}`}

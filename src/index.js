@@ -3,12 +3,15 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "../src/containers/App";
 import "tachyons";
-import { searchRobots } from "./reducers";
+import thunkMiddleware from "redux-thunk";
+import { searchRobots, requestCountries } from "./reducers";
 import * as serviceWorker from "./serviceWorker";
 import { Provider } from "react-redux";
-import { createStore } from "redux";
+import { createStore, applyMiddleware, combineReducers } from "redux";
 
-const store = createStore(searchRobots);
+const rootReducer = combineReducers({ searchRobots, requestCountries });
+
+const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
 
 ReactDOM.render(
   <Provider store={store}>
