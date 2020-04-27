@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap');
-
+@import url("https://fonts.googleapis.com/css?family=Pacifico&display=swap");
 
 body {
   margin: 0;
@@ -8,11 +7,15 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(to left,rgb(220, 241, 31,1) 0%, rgba(0,128,128,1) 100%);
+  background: linear-gradient(
+    to left,
+    rgb(220, 241, 31, 1) 0%,
+    rgba(0, 128, 128, 1) 100%
+  );
+  background-image: url("https://res.cloudinary.com/jerry299/image/upload/v1587957495/Pngtree_map_geography_atlas_country_background_650490_qps5p4.jpg");
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-

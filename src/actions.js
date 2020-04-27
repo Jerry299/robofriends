@@ -12,7 +12,7 @@ export const setSearchField = (text) => ({
   payload: text,
 });
 
-export const requestCountries = (dispatch) => {
+export const requestCountries = () => (dispatch) => {
   dispatch({ type: REQUEST_COUNTRIES_PENDING });
   fetch(`${API_URL}`)
     .then((res) => res.json())

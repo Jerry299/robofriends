@@ -1,6 +1,6 @@
 .lds-roller {
-  display: inline-block;
-  position: relative;
+  display: flex;
+
   width: 80px;
   height: 80px;
 }
@@ -81,4 +81,12 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+#body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }

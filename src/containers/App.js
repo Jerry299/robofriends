@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import Scroll from "../components/Scroll.js";
 import ErrorBoundary from "../components/ErrorBoundary";
 import "./App.css";
-import { API_URL } from "../config";
+
 import { setSearchField, requestCountries } from "../actions";
 import Spinner from "./Spinner";
 
@@ -23,17 +23,11 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onSearchChange: (event) => dispatch(setSearchField(event.target.value)),
+    onRequestCountries: () => dispatch(requestCountries()),
   };
 };
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      countries: [],
-    };
-  }
-
   //for Robofriends
   /* componentDidMount() {
     //console.log(this.props.store.getState());
@@ -43,25 +37,25 @@ class App extends Component {
   } */
 
   componentDidMount() {
-    fetch(`${API_URL}`)
-      .then((res) => res.json())
-      .then((data) =>
-        this.setState({
-          countries: data,
-        })
-      )
-      .catch((err) => console.log(err));
+    this.props.onRequestCountries();
   }
 
   render() {
     //in the props we used robots instead of countries, we would fix that as soon as possible
     //so robots in the props is equal to countries
-    const { countries } = this.state;
-    const { searchField, onSearchChange } = this.props;
-    const filteredRobots = this.state.countries.filter((country) => {
+
+    const {
+      searchField,
+      onSearchChange,
+      countries,
+      isPending,
+      err,
+    } = this.props;
+
+    const filteredRobots = countries.filter((country) => {
       return country.name.toLowerCase().includes(searchField.toLowerCase());
     });
-    return !countries.length ? (
+    return isPending ? (
       <Spinner />
     ) : (
       <div className="tc scroll-type">

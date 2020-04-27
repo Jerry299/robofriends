@@ -33,7 +33,7 @@ export const requestCountries = (
     case REQUEST_COUNTRIES_SUCCESS:
       return Object.assign({}, state, {
         countries: action.payload,
-        isPending: true,
+        isPending: false,
       });
     case REQUEST_COUNTRIES_FAILED:
       return Object.assign({}, state, {
